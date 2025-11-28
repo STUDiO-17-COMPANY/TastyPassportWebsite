@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tasty Passport - Turn every meal into better deals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Space Grotesk', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            coffee: '#2F140C',
+            tangerine: '#EA6A4A',
+            sand: '#FFF3DC',
+            cream: '#FFF8EE',
+            latte: '#FBE6B9',
+            cocoa: '#7A351F',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-cream text-coffee font-display">
+  <div class="min-h-screen flex flex-col bg-gradient-to-b from-cream via-[#FFEED4] to-cream">
+    <header class="sticky top-0 z-30 bg-white/85 backdrop-blur border-b border-latte/60">
+      <div class="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-tangerine to-[#FF9C66] flex items-center justify-center text-white text-lg shadow-lg shadow-tangerine/30">&#127869;&#65039;</div>
+          <span class="text-lg font-semibold tracking-tight text-coffee">Tasty Passport</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-cocoa">
+          <a href="#how-food" class="hover:text-tangerine transition">Food lovers</a>
+          <a href="#how-venues" class="hover:text-tangerine transition">Venues</a>
+          <a href="#audience" class="hover:text-tangerine transition">Who it's for</a>
+          <a href="#reviews" class="hover:text-tangerine transition">Reviews</a>
+          <a href="#faq" class="hover:text-tangerine transition">FAQ</a>
+          <a href="#contact" class="inline-flex items-center rounded-full border border-tangerine px-3 py-1 text-[13px] text-tangerine hover:bg-tangerine hover:text-white transition">Get early access</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="flex-1">
+      <!-- HERO -->
+      <section class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16 lg:py-20">
+        <div class="grid lg:grid-cols-[1.05fr,0.95fr] gap-10 items-center">
+          <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 rounded-full border border-latte/80 bg-white/70 px-4 py-1 text-[12px] uppercase tracking-[0.12em] text-cocoa shadow-sm shadow-latte/60">
+              <span class="w-2 h-2 rounded-full bg-tangerine animate-ping"></span>
+              Live pilots across Europe · Web app · No install needed
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+              Turn every meal into better deals. &#127829;&#10024;
+            </h1>
+            <p class="text-base md:text-lg text-cocoa/90 max-w-2xl">
+              A mobile-first web app that gives food lovers instant discounts and helps venues turn guests into loyal regulars.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-tangerine text-white text-sm font-semibold shadow-lg shadow-tangerine/30 hover:translate-y-[-2px] transition">I'm a food lover &#128523;</a>
+              <a href="#how-venues" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-cocoa/20 text-cocoa text-sm font-semibold bg-white hover:border-tangerine hover:text-tangerine transition">I'm a venue / restaurant &#127970;</a>
+            </div>
+            <div class="text-sm text-cocoa/80">Web app · No install needed · Launching city by city</div>
+          </div>
+          <div class="relative">
+            <div class="absolute -inset-4 md:-inset-6 bg-gradient-to-br from-tangerine/20 via-latte/40 to-white rounded-3xl blur-2xl"></div>
+            <div class="relative grid gap-4">
+              <div class="rounded-3xl bg-white shadow-2xl shadow-tangerine/15 border border-latte/70 p-6 flex flex-col gap-4">
+                <div class="flex items-center justify-between text-sm font-semibold text-cocoa">
+                  <span>Live map of partner venues in Europe</span>
+                  <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-latte text-cocoa/80 text-xs">Live deals &#128293;</span>
+                </div>
+                <div class="aspect-[4/5] rounded-2xl bg-gradient-to-br from-[#0f172a] via-[#172345] to-[#243B55] p-4 text-white relative overflow-hidden">
+                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(255,255,255,0.18),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(255,255,255,0.12),transparent_42%)]"></div>
+                  <div class="space-y-3 relative">
+                    <div class="flex items-center gap-2 text-sm"><span class="text-yellow-300">&#9733;</span> Lisbon · Barcelona · Berlin · Rome</div>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                      <div class="bg-white/10 rounded-xl px-3 py-2">Lisbon · Nano Banana · 18% OFF · Redeem</div>
+                      <div class="bg-white/10 rounded-xl px-3 py-2">Barcelona · Brunchio · 15% OFF</div>
+                      <div class="bg-white/10 rounded-xl px-3 py-2">Berlin · Kiez Kaffee · 10% OFF</div>
+                      <div class="bg-white/10 rounded-xl px-3 py-2">Rome · Trastevere Bakes · 12% OFF</div>
+                    </div>
+                    <div class="bg-white/15 rounded-xl p-3 text-sm">
+                      <div class="flex items-center justify-between font-semibold">
+                        <span>Lisbon · Nano Banana</span>
+                        <button class="px-3 py-1 rounded-lg bg-tangerine text-white text-xs font-semibold shadow shadow-tangerine/30">Redeem</button>
+                      </div>
+                      <p class="text-xs text-white/80">Welcome 18% off · Valid today · Tap to show QR</p>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-cocoa/80">Drag across cities to find cafes, bakeries and restaurants where your discounts are already waiting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL STRIP -->
+      <section class="bg-white/70 border-y border-latte/60">
+        <div class="max-w-6xl mx-auto px-5 md:px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-2 text-sm font-semibold text-cocoa uppercase tracking-wide">
+            <span class="text-lg">&#9992;&#65039;</span>
+            Already onboarding across Europe
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-sm text-cocoa/80">
+            <span class="px-3 py-1 rounded-full bg-latte text-cocoa/90">Piloting with selected cafes, bakeries and restaurants across Europe — launching city by city.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- AUDIENCE SPLIT -->
+      <section id="audience" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-8">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#127919;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Who Tasty Passport is for</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-3xl border border-latte/60 bg-white p-6 shadow-lg shadow-latte/30 space-y-4">
+            <div class="flex items-center gap-2 text-sm font-semibold text-tangerine uppercase tracking-wide">For food lovers &#128523;</div>
+            <p class="text-cocoa/90">Skip the endless scrolling. Open the map, pick a spot, and get a sweet welcome discount right away.</p>
+            <ul class="text-sm text-cocoa/90 space-y-2">
+              <li>• Instant welcome deals across Europe</li>
+              <li>• Track levels at each venue as you return</li>
+              <li>• Share QR invites to grow where you love</li>
+            </ul>
+            <a href="#how-food" class="inline-flex items-center gap-2 text-sm font-semibold text-tangerine hover:underline">See how it works →</a>
+          </div>
+          <div class="rounded-3xl border border-tangerine/50 bg-latte p-6 shadow-lg shadow-tangerine/30 space-y-4">
+            <div class="flex items-center gap-2 text-sm font-semibold text-cocoa uppercase tracking-wide">For venues & restaurants &#127970;</div>
+            <p class="text-cocoa">Turn first-time guests into regulars with welcome offers, loyalty ladders, and clear data.</p>
+            <ul class="text-sm text-cocoa space-y-2">
+              <li>• Define discounts without racing to the bottom</li>
+              <li>• Validate redemptions with QR at checkout</li>
+              <li>• See who visits, how often, and what they redeem</li>
+            </ul>
+            <a href="#how-venues" class="inline-flex items-center gap-2 text-sm font-semibold text-cocoa hover:underline">See the venue dashboard →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS – FOOD LOVERS -->
+      <section id="how-food" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#128241;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">How it works for food lovers</h2>
+        </div>
+        <p class="text-cocoa/90 max-w-2xl">Nothing to install. Tap the link, browse the map, and redeem your welcome discount at hand-picked places.</p>
+        <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 items-start">
+          <div class="space-y-5">
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">1. Create your free account &#128640;</h3>
+              <p class="text-sm text-cocoa/90">Join in seconds, no app store required.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">2. Discover venues on a global map or list &#127760;</h3>
+              <p class="text-sm text-cocoa/90">Pins across Europe plus a clean list with instant deals.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">3. Use your first welcome discount &#128176;</h3>
+              <p class="text-sm text-cocoa/90">Show the QR or code at checkout and redeem.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">4. Level up at each venue as you return &#128293;</h3>
+              <p class="text-sm text-cocoa/90">Better perks the more you visit a specific place.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">5. Invite friends with QR codes or links &#129309;</h3>
+              <p class="text-sm text-cocoa/90">Share where you love; you both get progress.</p>
+            </div>
+          </div>
+          <div class="rounded-3xl bg-gradient-to-br from-[#161B2E] via-[#1D2A3F] to-[#243B55] text-white p-6 shadow-2xl shadow-tangerine/20 border border-white/10 space-y-4">
+            <div class="flex items-center justify-between text-sm font-semibold">
+              <span>Food lover view</span>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs">Mockups &#10024;</span>
+            </div>
+            <div class="grid gap-3 text-sm">
+              <div class="bg-white/10 rounded-2xl px-4 py-3 flex items-center justify-between">
+                <span>Map view with pins</span>
+                <span class="text-yellow-300">&#9679; &#9679; &#9679;</span>
+              </div>
+              <div class="bg-white/10 rounded-2xl px-4 py-3">Discount card with QR ready &#9989;</div>
+              <div class="bg-white/10 rounded-2xl px-4 py-3">Level tracker per venue &#128200;</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS – VENUES -->
+      <section id="how-venues" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#129382;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">How it works for venues</h2>
+        </div>
+        <p class="text-cocoa/90 max-w-2xl">Make it effortless for guests to redeem and for your team to validate. Data included.</p>
+        <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 items-start">
+          <div class="space-y-5">
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">1. Join Tasty Passport and set up your venue &#128205;</h3>
+              <p class="text-sm text-cocoa/90">Add your details and upload your best shots.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">2. Define your welcome offer and loyalty ladder &#127873;</h3>
+              <p class="text-sm text-cocoa/90">Pick discounts and perks per level.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">3. Use QR codes at checkout to validate discounts &#9989;</h3>
+              <p class="text-sm text-cocoa/90">Staff scans guest QR to approve instantly.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">4. See who visits, how often and what they redeem &#128202;</h3>
+              <p class="text-sm text-cocoa/90">Spot regulars and celebrate them.</p>
+            </div>
+            <div class="rounded-2xl bg-white shadow-md shadow-latte/40 border border-latte/60 p-4">
+              <h3 class="text-xl font-semibold">5. Optimise your offers based on real behaviour &#9881;&#65039;</h3>
+              <p class="text-sm text-cocoa/90">Tweak ladders with live data.</p>
+            </div>
+          </div>
+          <div class="rounded-3xl bg-white shadow-2xl shadow-tangerine/20 border border-latte/70 p-6 space-y-4">
+            <div class="flex items-center justify-between text-sm font-semibold text-cocoa">
+              <span>Venue dashboard mockup</span>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-latte text-xs text-cocoa/90">Analytics &#129504;</span>
+            </div>
+            <div class="space-y-3 text-sm text-cocoa">
+              <div class="rounded-2xl bg-gradient-to-r from-latte to-white px-4 py-3 flex items-center justify-between">
+                <span>Visits this week</span>
+                <span class="font-semibold">+34%</span>
+              </div>
+              <div class="rounded-2xl border border-latte/60 px-4 py-3">Redemption timeline with QR validations &#9989;&#9989;&#9989;</div>
+              <div class="rounded-2xl border border-latte/60 px-4 py-3">Loyalty ladder editor (Level 0 → Level 3) &#129698;</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEVELS & REWARDS -->
+      <section class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#129698;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Level up at each place you love</h2>
+        </div>
+        <p class="text-cocoa/90 max-w-3xl">Every venue has its own ladder. Start with a welcome discount, then level up with every visit to unlock tastier perks.</p>
+        <div class="rounded-3xl bg-white shadow-xl shadow-latte/30 border border-latte/70 p-6">
+          <h3 class="text-xl font-semibold mb-3">Example: how levels work at a cafe &#9749;</h3>
+          <div class="grid md:grid-cols-5 gap-3 text-sm text-cocoa">
+            <div class="rounded-2xl border border-latte/70 bg-latte/60 p-3">
+              <p class="font-semibold">First visit</p>
+              <p>Welcome 15% off + free biscotti</p>
+            </div>
+            <div class="rounded-2xl border border-latte/70 bg-white p-3">
+              <p class="font-semibold">Level 1</p>
+              <p>Free extra shot or syrup</p>
+            </div>
+            <div class="rounded-2xl border border-latte/70 bg-white p-3">
+              <p class="font-semibold">Level 2</p>
+              <p>Buy 1 get 1 50% off drinks</p>
+            </div>
+            <div class="rounded-2xl border border-latte/70 bg-white p-3">
+              <p class="font-semibold">Level 3</p>
+              <p>Free pastry with any coffee</p>
+            </div>
+            <div class="rounded-2xl border border-latte/70 bg-white p-3">
+              <p class="font-semibold">Level 4</p>
+              <p>VIP tasting invite for you + friend &#127881;</p>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center gap-3 text-sm text-cocoa/90">
+            <div class="flex-1 h-2 rounded-full bg-latte overflow-hidden">
+              <div class="h-full w-2/3 bg-gradient-to-r from-tangerine to-[#FF9C66]"></div>
+            </div>
+            <span class="text-xs uppercase tracking-wide font-semibold">Progress per venue ➡️</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- REFERRALS & QR -->
+      <section class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#128279;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Invite friends, choose where you grow</h2>
+        </div>
+        <p class="text-cocoa/90 max-w-3xl">Share your QR code or link, pick the venue you want to boost, and watch your levels jump when friends join and redeem.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">Share your QR code or link &#128241;</h3>
+            <p class="text-sm text-cocoa/90">Send a quick link or let friends scan your QR at the table.</p>
+            <h3 class="text-xl font-semibold">Choose which venue gets the credit &#127937;</h3>
+            <p class="text-sm text-cocoa/90">Pick the cafe or restaurant you want to level up faster.</p>
+            <h3 class="text-xl font-semibold">Earn extra progress when your friends join and redeem &#127881;</h3>
+            <p class="text-sm text-cocoa/90">Your invite fuels your own perks. Everybody wins.</p>
+          </div>
+          <div class="rounded-3xl bg-gradient-to-br from-[#161B2E] via-[#1D2A3F] to-[#243B55] text-white p-6 shadow-2xl shadow-tangerine/20 border border-white/10 space-y-4">
+            <div class="flex items-center justify-between text-sm font-semibold">
+              <span>QR + venue selector mockup</span>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs">Sharing &#128247;</span>
+            </div>
+            <div class="grid gap-3 text-sm">
+              <div class="bg-white/10 rounded-2xl px-4 py-3">QR preview with logo &#9989;</div>
+              <div class="bg-white/10 rounded-2xl px-4 py-3 flex items-center justify-between">
+                <span>Choose venue</span>
+                <span class="text-yellow-300">Nano Banana · Lisbon ▼</span>
+              </div>
+              <div class="bg-white/10 rounded-2xl px-4 py-3">Referral progress bar &#129000;&#129001;&#129001;&#129001;</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCT VISUALS -->
+      <section class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#128064;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">A quick look inside Tasty Passport</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">Discover venues on a global map &#127757;</h3>
+            <p class="text-sm text-cocoa/90">Pin-based exploration with filters by vibe, cuisine, and perks.</p>
+            <div class="rounded-2xl bg-gradient-to-br from-[#141E30] to-[#243B55] text-white text-sm p-4">Map mockup</div>
+          </div>
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">See your discounts and level at each place &#129689;</h3>
+            <p class="text-sm text-cocoa/90">Welcome offer, next level, and QR ready to redeem.</p>
+            <div class="rounded-2xl bg-gradient-to-br from-[#1F1C2C] to-[#928DAB] text-white text-sm p-4">Discount card mockup</div>
+          </div>
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">Track real loyalty in the venue dashboard &#128200;</h3>
+            <p class="text-sm text-cocoa/90">Visits, redemptions, ladder performance in one place.</p>
+            <div class="rounded-2xl bg-gradient-to-br from-[#42275a] to-[#734b6d] text-white text-sm p-4">Dashboard mockup</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY THIS EXISTS -->
+      <section id="why" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#128161;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Why Tasty Passport exists</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">For people who eat out &#127869;&#65039;</h3>
+            <p class="text-sm text-cocoa/90">Ditch the scroll fatigue. Find the best spots and feel rewarded on the first bite.</p>
+          </div>
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+            <h3 class="text-xl font-semibold">For the people who run the venues &#129309;</h3>
+            <p class="text-sm text-cocoa/90">Bring in new faces, keep them coming back, and measure loyalty without clunky systems.</p>
+          </div>
+          <div class="rounded-3xl border border-tangerine/60 bg-latte p-6 shadow-lg shadow-tangerine/30 space-y-3">
+            <h3 class="text-xl font-semibold">A simple bridge between guests and venues &#127752;</h3>
+            <p class="text-sm text-cocoa/90">Hospitality should feel human. Tasty Passport connects great people with great places through playful rewards.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS / SOCIAL PROOF -->
+      <section id="reviews" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#128227;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">What people are saying</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-4">
+            <h3 class="text-xl font-semibold">Food lovers &#128525;</h3>
+            <p class="text-sm text-cocoa/90">“Landed in Lisbon and Tasty Passport already had a discount waiting at Nano Banana, two streets from my Airbnb.”</p>
+            <p class="text-sm text-cocoa/90">“Levels make it addictive in a good way — I want to unlock the next reward at my favourite cafe before I fly home.”</p>
+            <p class="text-sm text-cocoa/90">“No app download, no hunting through 100 reviews. Just scan, eat, and feel like a local.”</p>
+          </div>
+          <div class="rounded-3xl border border-tangerine/60 bg-latte p-6 shadow-lg shadow-tangerine/30 space-y-4">
+            <h3 class="text-xl font-semibold">Venues &#129385;</h3>
+            <p class="text-sm text-cocoa">“We added a simple welcome ladder and suddenly new guests started coming in with QR codes instead of random walk-ins.”</p>
+            <p class="text-sm text-cocoa">“Being inside Tasty Passport is like having our own little loyalty system, without building an app.”</p>
+            <p class="text-sm text-cocoa">“The dashboard shows us who comes back and which rewards perform best — we tweak offers in minutes.”</p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-3xl bg-white border border-latte/70 shadow-lg shadow-latte/30 overflow-hidden">
+            <div class="h-36 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="p-4 text-sm text-cocoa">Nano Banana · people holding coffee and dessert at the door &#128247;</div>
+          </div>
+          <div class="rounded-3xl bg-white border border-latte/70 shadow-lg shadow-latte/30 overflow-hidden">
+            <div class="h-36 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="p-4 text-sm text-cocoa">Friends inside Nano Banana with a phone showing a discount &#9989;</div>
+          </div>
+          <div class="rounded-3xl bg-white border border-latte/70 shadow-lg shadow-latte/30 overflow-hidden">
+            <div class="h-36 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="p-4 text-sm text-cocoa">Close-up of dessert + QR code ready to redeem &#127856;</div>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30">
+          <h3 class="text-xl font-semibold mb-3">Early numbers from our beta &#128290;</h3>
+          <ul class="grid md:grid-cols-3 gap-4 text-sm text-cocoa">
+            <li class="rounded-2xl border border-latte/70 bg-latte/60 p-4">
+              <p class="font-semibold text-lg">320+</p>
+              <p>Discounts redeemed in our beta</p>
+            </li>
+            <li class="rounded-2xl border border-latte/70 bg-white p-4">
+              <p class="font-semibold text-lg">18</p>
+              <p>Partner venues in pilot</p>
+            </li>
+            <li class="rounded-2xl border border-latte/70 bg-white p-4">
+              <p class="font-semibold text-lg">42%</p>
+              <p>Guests came back at least once</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">&#10067;</span>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Frequently asked questions</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4 rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30">
+            <h3 class="text-xl font-semibold">For food lovers &#127829;</h3>
+            <div>
+              <h4 class="font-semibold text-cocoa">What exactly is Tasty Passport?</h4>
+              <p class="text-sm text-cocoa/90">Tasty Passport is a web app that gives you instant discounts and level-based rewards at selected cafes and restaurants across Europe.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">Do I need to install an app?</h4>
+              <p class="text-sm text-cocoa/90">No installs. You just tap the link, sign in, and start using your discounts from your browser.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">How do discounts and levels work?</h4>
+              <p class="text-sm text-cocoa/90">Each venue has a welcome offer and a simple ladder. The more times you visit and redeem, the better the rewards get for that specific place.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">Can I use it in more than one city?</h4>
+              <p class="text-sm text-cocoa/90">Yes. Your Tasty Passport travels with you — you can switch cities anytime and keep your levels per venue.</p>
+            </div>
+          </div>
+          <div class="space-y-4 rounded-3xl border border-tangerine/60 bg-latte p-6 shadow-lg shadow-tangerine/30">
+            <h3 class="text-xl font-semibold">For venues &#127970;</h3>
+            <div>
+              <h4 class="font-semibold text-cocoa">How do we validate discounts at the counter?</h4>
+              <p class="text-sm text-cocoa/90">Guests show a QR code at checkout. You scan it and the system logs the visit and the reward in real time.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">Do we control our own offers?</h4>
+              <p class="text-sm text-cocoa/90">Yes. You design your welcome offer and the reward ladder — coffee, dessert, secret item, whatever fits your margin.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">What do we see in the dashboard?</h4>
+              <p class="text-sm text-cocoa/90">You see new vs returning guests, redemptions per reward level, and basic insights to understand what actually drives loyalty.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-cocoa">How does pilot access work?</h4>
+              <p class="text-sm text-cocoa/90">Pilot venues get concierge onboarding, featured placement in the city view, and priority access to new analytics features.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT / FINAL CTA -->
+      <section id="contact" class="border-y border-latte/60 bg-sand">
+        <div class="max-w-6xl mx-auto px-5 md:px-8 py-14 space-y-8">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">&#127869;&#65039;</span>
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Let’s make your next visit more rewarding</h2>
+          </div>
+          <p class="text-sm md:text-base text-cocoa/90 max-w-3xl">Tell us who you are and where you’re based. We’ll send you a tailored invite when Tasty Passport opens in your area.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-3">
+              <h3 class="text-xl font-semibold">For food lovers &#128523;</h3>
+              <p class="text-sm text-cocoa/90">Grab your early access link and unlock welcome deals first.</p>
+              <a href="mailto:info@tastypassport.online?subject=Tasty%20Passport%20-%20Food%20Lover" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-tangerine text-white text-sm font-semibold shadow-md shadow-tangerine/30 hover:translate-y-[-2px] transition">Get my early access link</a>
+            </div>
+            <div class="rounded-3xl border border-tangerine/60 bg-latte p-6 shadow-lg shadow-tangerine/30 space-y-3">
+              <h3 class="text-xl font-semibold">For venues &#129385;</h3>
+              <p class="text-sm text-cocoa">We’re inviting pilot venues right now. Pick how you’d like to start.</p>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a href="mailto:info@tastypassport.online?subject=Apply%20as%20a%20pilot%20venue" class="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-coffee text-white text-sm font-semibold shadow-md shadow-coffee/30 hover:translate-y-[-2px] transition">Apply as a pilot venue</a>
+                <a href="mailto:info@tastypassport.online?subject=Book%20a%2015-min%20intro%20call" class="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-xl border border-coffee/30 text-coffee text-sm font-semibold bg-white hover:border-tangerine hover:text-tangerine transition">Book a 15-min intro call</a>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-latte/70 bg-white p-6 shadow-lg shadow-latte/30 space-y-4">
+            <h3 class="text-lg font-semibold">Prefer a form? Drop your details &#9997;&#65039;</h3>
+            <form class="grid md:grid-cols-3 gap-3">
+              <input type="text" placeholder="Your name" class="w-full px-4 py-3 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream" />
+              <input type="email" placeholder="Your email address" class="w-full px-4 py-3 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream" />
+              <input type="text" placeholder="City / region" class="w-full px-4 py-3 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream" />
+              <select class="w-full px-4 py-3 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream md:col-span-3">
+                <option>I’m a food lover looking for discounts</option>
+                <option>I’m a venue looking for more loyal guests</option>
+              </select>
+              <button type="button" class="md:col-span-3 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-tangerine text-white text-sm font-semibold shadow-md shadow-tangerine/30 hover:translate-y-[-2px] transition">Get my early access link</button>
+            </form>
+            <p class="text-sm text-cocoa/80">Or email us directly at <a class="text-tangerine font-semibold" href="mailto:info@tastypassport.online">info@tastypassport.online</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white py-8">
+      <div class="max-w-6xl mx-auto px-5 md:px-8 space-y-4 text-cocoa">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm">
+          <div class="flex items-center gap-2 font-semibold">
+            <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-tangerine to-[#FF9C66] flex items-center justify-center text-white text-base shadow shadow-tangerine/30">&#127869;&#65039;</div>
+            <span>Tasty Passport</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#" class="hover:text-tangerine">Privacy Policy</a>
+            <a href="#" class="hover:text-tangerine">Terms</a>
+            <a href="#contact" class="hover:text-tangerine">Contact</a>
+            <a href="mailto:info@tastypassport.online" class="hover:text-tangerine">info@tastypassport.online</a>
+          </div>
+          <div class="text-sm text-cocoa/80">Follow us: Instagram | TikTok | LinkedIn</div>
+        </div>
+        <div class="text-sm text-cocoa/80">(c) 2025 Tasty Passport | All rights reserved | STUDiO 17.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
