@@ -96,7 +96,7 @@
             <a href="#rewards" class="hover:text-tangerine transition">Rewards</a>
             <a href="#reviews" class="hover:text-tangerine transition">Reviews</a>
             <a href="#faq" class="hover:text-tangerine transition">FAQ</a>
-            <a href="partners.html" class="text-cocoa/50 hover:text-coffee transition">Partner with us</a>
+            <!-- <a href="partners.html" class="text-cocoa/60 font-medium hover:text-coffee transition">Partner with us</a> -->
             <a href="#join" class="inline-flex items-center rounded-full border border-tangerine px-4 py-1.5 text-[13px] text-tangerine hover:bg-tangerine hover:text-white transition shadow-sm hover:shadow-tangerine/40">Get early access</a>
             </nav>
 
@@ -417,8 +417,8 @@
             </p>
           </div>
           <div class="pt-8 border-t border-coffee/10 mt-8">
-             <p class="text-sm font-semibold text-cocoa">Are you a venue owner?</p>
-             <a href="partners.html" class="text-tangerine hover:underline text-sm font-medium">Apply here to become a partner</a>
+             <!--<p class="text-sm font-semibold text-cocoa">Are you a venue owner?</p>
+             <a href="partners.html" class="text-tangerine hover:underline text-sm font-medium">Apply here to become a partner</a>-->
           </div>
         </div>
       </section>
@@ -431,12 +431,11 @@
              <img src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764336914/Logo_Text_Only_ar2jck.svg" alt="Tasty Passport" class="h-5 w-auto">
           </div>
           <div class="flex flex-wrap items-center gap-6 text-cocoa/80 font-medium">
-            <a href="#" class="hover:text-tangerine transition">Privacy</a>
-            <a href="#" class="hover:text-tangerine transition">Terms</a>
+            <a href="privacy.html" class="hover:text-tangerine transition">Privacy</a>
+            <a href="terms.html" class="hover:text-tangerine transition">Terms</a>
             <a href="https://www.instagram.com/createwithstudio17/" target="_blank" rel="noopener noreferrer" class="hover:text-tangerine transition">Instagram</a>
             <a href="https://www.linkedin.com/company/studio17-homepage/" target="_blank" rel="noopener noreferrer" class="hover:text-tangerine transition">LinkedIn</a>
             <a href="mailto:info@tastypassport.online" class="hover:text-tangerine transition">Contact Us</a>
-            <button id="contact-btn" type="button" class="hover:text-tangerine transition text-left" onclick="openMail(event)">Contact Us</button>
           </div>
           <div class="text-xs text-cocoa/50">&copy; 2025 Tasty Passport. Made with love in Europe.</div>
       </div>
@@ -455,53 +454,6 @@
             mobileMenu.classList.remove('mobile-menu-open');
             mobileMenu.classList.add('mobile-menu-closed');
         }
-    }
-
-    mobileBtn.addEventListener('click', toggleMenu);
-
-    // Contact helpers
-    function openMail(e) {
-      e.preventDefault();
-      const mail = 'info@tastypassport.online';
-      const subject = encodeURIComponent('Contact from website');
-      const mailto = `mailto:${mail}?subject=${subject}`;
-
-      // Try to open mail handler. If popup blocked / no handler, window.open returns null -> show fallback modal.
-      const opened = window.open(mailto);
-      if (opened) {
-        // Some browsers will open the external mail app and return a window handle; leave it.
-        return;
-      }
-
-      // Fallback: show modal with copy / open link
-      const modal = document.getElementById('contact-modal');
-      const openLink = document.getElementById('open-mail-link');
-      openLink.href = mailto;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('contact-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    function copyEmail() {
-      const email = document.getElementById('contact-email').value;
-      if (!navigator.clipboard) {
-        // fallback
-        const input = document.getElementById('contact-email');
-        input.select();
-        document.execCommand('copy');
-        alert('Email copied: ' + email);
-        return;
-      }
-      navigator.clipboard.writeText(email).then(() => {
-        alert('Email copied: ' + email);
-      }, () => {
-        alert('Could not copy. Please copy manually: ' + email);
-      });
     }
 
     mobileBtn.addEventListener('click', toggleMenu);
