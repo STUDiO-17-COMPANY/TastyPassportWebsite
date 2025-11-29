@@ -39,7 +39,7 @@
   </script>
   
   <style>
-    /* Custom Scrollbar for a premium feel */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #FFF8EE; }
     ::-webkit-scrollbar-thumb { background: #FBE6B9; border-radius: 4px; }
@@ -66,33 +66,54 @@
       border-bottom-right-radius: 12px;
       z-index: 20;
     }
+    /* Mobile Menu Animation */
+    #mobile-menu { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+    .mobile-menu-open { max-height: 400px; opacity: 1; }
+    .mobile-menu-closed { max-height: 0; opacity: 0; overflow: hidden; }
   </style>
 </head>
-<body class="min-h-screen bg-cream text-coffee font-display">
+<body class="min-h-screen bg-cream text-coffee font-display overflow-x-hidden">
   <div class="min-h-screen flex flex-col bg-gradient-to-b from-cream via-[#FFEED4] to-cream">
     
-    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-latte/60 transition-all duration-300">
-      <div class="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
-        <a href="#top" class="flex items-center gap-3 group">
-          <img 
-            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" 
-            alt="Tasty Passport Icon" 
-            class="h-10 w-10 rounded-xl shadow-lg shadow-tangerine/20 group-hover:scale-105 transition duration-300"
-          >
-          <img 
-            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764336914/Logo_Text_Only_ar2jck.svg" 
-            alt="Tasty Passport" 
-            class="h-6 md:h-7 w-auto mt-0.5"
-          >
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-cocoa">
-          <a href="#how-it-works" class="hover:text-tangerine transition">How it works</a>
-          <a href="#rewards" class="hover:text-tangerine transition">Rewards</a>
-          <a href="#reviews" class="hover:text-tangerine transition">Reviews</a>
-          <a href="#faq" class="hover:text-tangerine transition">FAQ</a>
-          <a href="partners.html" class="text-cocoa/50 hover:text-coffee transition">Partner with us</a>
-          <a href="#join" class="inline-flex items-center rounded-full border border-tangerine px-4 py-1.5 text-[13px] text-tangerine hover:bg-tangerine hover:text-white transition shadow-sm hover:shadow-tangerine/40">Get early access</a>
-        </nav>
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-latte/60 transition-all duration-300">
+      <div class="max-w-6xl mx-auto px-5 md:px-8 py-3 md:py-4">
+        <div class="flex items-center justify-between">
+            <a href="#top" class="flex items-center gap-3 group">
+            <img 
+                src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" 
+                alt="Tasty Passport Icon" 
+                class="h-10 w-10 rounded-xl shadow-lg shadow-tangerine/20 group-hover:scale-105 transition duration-300"
+            >
+            <img 
+                src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764336914/Logo_Text_Only_ar2jck.svg" 
+                alt="Tasty Passport" 
+                class="h-6 w-auto mt-1"
+            >
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-cocoa">
+            <a href="#how-it-works" class="hover:text-tangerine transition">How it works</a>
+            <a href="#rewards" class="hover:text-tangerine transition">Rewards</a>
+            <a href="#reviews" class="hover:text-tangerine transition">Reviews</a>
+            <a href="#faq" class="hover:text-tangerine transition">FAQ</a>
+            <a href="partners.html" class="text-cocoa/50 hover:text-coffee transition">Partner with us</a>
+            <a href="#join" class="inline-flex items-center rounded-full border border-tangerine px-4 py-1.5 text-[13px] text-tangerine hover:bg-tangerine hover:text-white transition shadow-sm hover:shadow-tangerine/40">Get early access</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-coffee focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu-closed md:hidden flex flex-col space-y-4 pt-4 pb-2 border-t border-latte/30 mt-3 text-center">
+             <a href="#how-it-works" class="block text-cocoa font-medium hover:text-tangerine" onclick="toggleMenu()">How it works</a>
+             <a href="#rewards" class="block text-cocoa font-medium hover:text-tangerine" onclick="toggleMenu()">Rewards</a>
+             <a href="#reviews" class="block text-cocoa font-medium hover:text-tangerine" onclick="toggleMenu()">Reviews</a>
+             <a href="partners.html" class="block text-cocoa/60 font-medium hover:text-coffee" onclick="toggleMenu()">Partner with us</a>
+             <a href="#join" class="inline-block bg-tangerine text-white px-6 py-2 rounded-xl font-bold mx-auto" onclick="toggleMenu()">Get Early Access</a>
+        </div>
       </div>
     </header>
 
@@ -130,12 +151,11 @@
             </div>
           </div>
           
-          <div class="relative flex justify-center lg:justify-end">
+          <div class="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
              <div class="absolute inset-0 bg-gradient-to-br from-tangerine/20 via-latte/40 to-transparent rounded-full blur-3xl transform scale-90"></div>
              
-             <div class="phone-frame w-[300px] h-[600px] z-10 transform rotate-[-3deg] hover:rotate-0 transition duration-500">
+             <div class="phone-frame w-[280px] md:w-[300px] h-[550px] md:h-[600px] z-10 transform rotate-[-3deg] hover:rotate-0 transition duration-500">
                 <div class="phone-notch"></div>
-                
                 <div class="h-full w-full bg-slate-900 relative">
                   <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80');"></div>
                   
@@ -143,7 +163,6 @@
                     <div class="font-bold">Map View</div>
                     <div class="h-8 w-8 rounded-full bg-tangerine/90 flex items-center justify-center text-xs shadow-lg">JS</div>
                   </div>
-
                   <div class="absolute top-[30%] left-[20%] animate-bounce duration-[2000ms]">
                     <div class="bg-white text-coffee text-[10px] font-bold px-2 py-1 rounded shadow-lg mb-1 whitespace-nowrap">15% OFF</div>
                     <div class="text-3xl drop-shadow-lg text-tangerine text-center">📍</div>
@@ -151,7 +170,6 @@
                   <div class="absolute top-[45%] right-[20%]">
                     <div class="text-3xl drop-shadow-lg text-white/80">📍</div>
                   </div>
-
                   <div class="absolute bottom-6 left-4 right-4 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl">
                     <div class="flex items-center gap-3">
                       <div class="h-12 w-12 rounded-xl bg-cover bg-center shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=150&q=80')"></div>
@@ -164,10 +182,6 @@
                   </div>
                 </div>
              </div>
-             
-             <div class="absolute top-20 -right-4 bg-white p-3 rounded-xl shadow-xl border border-latte/50 animate-bounce duration-[3000ms] z-20">
-               <span class="text-2xl">🥞</span>
-             </div>
           </div>
         </div>
       </section>
@@ -175,7 +189,7 @@
       <section class="border-y border-latte/60 bg-white/50 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto px-5 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
            <p class="text-xs font-bold uppercase tracking-widest text-cocoa/40 whitespace-nowrap">Partnering with local favorites</p>
-           <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 w-full md:w-auto">
+           <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 w-full md:w-auto">
               <div class="flex items-center gap-2 font-display font-bold text-lg text-coffee"><span class="text-xl">☕</span> KiezKaffee</div>
               <div class="flex items-center gap-2 font-display font-bold text-lg text-coffee"><span class="text-xl">🍌</span> NanoBanana</div>
               <div class="flex items-center gap-2 font-display font-bold text-lg text-coffee"><span class="text-xl">🥐</span> Trastevere</div>
@@ -190,7 +204,6 @@
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-coffee">How it works</h2>
           <p class="text-lg text-cocoa/80">Nothing to install. Tap the link, browse the map, and redeem your welcome discount at hand-picked places.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-8 relative">
           <div class="group rounded-3xl border border-latte/60 bg-white p-8 shadow-lg shadow-latte/20 relative z-10 hover:-translate-y-2 transition duration-300">
             <div class="text-6xl font-bold text-latte/30 absolute top-4 right-6 pointer-events-none group-hover:text-tangerine/10 transition">1</div>
@@ -198,14 +211,12 @@
             <h3 class="text-xl font-bold mb-3 text-coffee">Discover gems</h3>
             <p class="text-cocoa/80 leading-relaxed">Browse the map to find curated cafes and restaurants that want to treat you nicely.</p>
           </div>
-
           <div class="group rounded-3xl border border-latte/60 bg-white p-8 shadow-lg shadow-latte/20 relative z-10 hover:-translate-y-2 transition duration-300">
             <div class="text-6xl font-bold text-latte/30 absolute top-4 right-6 pointer-events-none group-hover:text-tangerine/10 transition">2</div>
             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-tangerine to-orange-400 flex items-center justify-center text-white text-2xl mb-6 shadow-md shadow-tangerine/30">&#128176;</div>
             <h3 class="text-xl font-bold mb-3 text-coffee">Instant deals</h3>
             <p class="text-cocoa/80 leading-relaxed">No waiting for points. Get a discount (like 15% off) just for walking in the first time.</p>
           </div>
-
           <div class="group rounded-3xl border border-latte/60 bg-white p-8 shadow-lg shadow-latte/20 relative z-10 hover:-translate-y-2 transition duration-300">
             <div class="text-6xl font-bold text-latte/30 absolute top-4 right-6 pointer-events-none group-hover:text-tangerine/10 transition">3</div>
             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-tangerine to-orange-400 flex items-center justify-center text-white text-2xl mb-6 shadow-md shadow-tangerine/30">&#128200;</div>
@@ -218,7 +229,6 @@
       <section id="rewards" class="max-w-6xl mx-auto px-5 md:px-8 py-10">
         <div class="rounded-[2.5rem] bg-coffee text-cream overflow-hidden shadow-2xl shadow-coffee/20 relative">
           <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#FBE6B9 1px, transparent 1px); background-size: 20px 20px;"></div>
-          
           <div class="grid lg:grid-cols-2 gap-12 p-8 md:p-14 items-center relative z-10">
             <div class="space-y-8">
               <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide text-latte">
@@ -227,10 +237,6 @@
               <h2 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
                 Unlock tastier perks <br/>the more you visit.
               </h2>
-              <p class="text-white/70 text-lg max-w-md">
-                Every venue has its own ladder. Start with a discount, then level up to free items and VIP invites.
-              </p>
-              
               <div class="space-y-4">
                 <div class="flex items-center gap-5 bg-white/5 rounded-2xl p-4 border border-white/10 hover:bg-white/10 transition cursor-default">
                   <div class="h-12 w-12 rounded-full bg-latte text-coffee flex items-center justify-center font-bold text-lg shadow-lg">1</div>
@@ -256,10 +262,8 @@
                 </div>
               </div>
             </div>
-
-            <div class="relative h-full min-h-[400px] flex items-center justify-center">
+            <div class="relative h-full min-h-[350px] md:min-h-[400px] flex items-center justify-center">
                <div class="absolute inset-0 bg-gradient-to-br from-tangerine/20 to-transparent blur-3xl"></div>
-               
                <div class="w-full max-w-sm bg-white rounded-3xl p-6 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 border border-latte/50">
                   <div class="flex justify-between items-start mb-6">
                     <div class="flex items-center gap-3">
@@ -271,7 +275,6 @@
                     </div>
                     <span class="bg-latte text-coffee text-xs font-bold px-2 py-1 rounded">LVL 2</span>
                   </div>
-                  
                   <div class="space-y-2 mb-6">
                     <div class="flex justify-between text-sm font-semibold text-coffee">
                       <span>Progress to Level 3</span>
@@ -281,7 +284,6 @@
                       <div class="h-full w-2/5 bg-gradient-to-r from-tangerine to-orange-300"></div>
                     </div>
                   </div>
-
                   <div class="bg-cream border-2 border-dashed border-coffee/20 rounded-xl p-5 text-center relative overflow-hidden group">
                     <div class="absolute inset-0 bg-tangerine/5 transform scale-x-0 group-hover:scale-x-100 transition origin-left duration-500"></div>
                     <p class="text-xs uppercase tracking-wide text-gray-500 mb-1 relative z-10">Reward Available</p>
@@ -314,11 +316,10 @@
              &#9733;&#9733;&#9733;&#9733;&#9733; <span class="text-cocoa font-semibold ml-2 text-sm">4.9/5 from 300+ reviews</span>
            </div>
         </div>
-        
         <div class="grid md:grid-cols-3 gap-6">
           <div class="rounded-3xl border border-latte/70 bg-white p-8 shadow-lg shadow-latte/10 hover:shadow-latte/30 transition hover:-translate-y-1">
             <div class="flex text-tangerine text-sm mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="text-cocoa/90 mb-6 leading-relaxed italic">“Landed in Lisbon and Tasty Passport already had a discount waiting at Nano Banana, two streets from my Airbnb. Best discovery tool ever.”</p>
+            <p class="text-cocoa/90 mb-6 leading-relaxed italic">“Landed in Lisbon and Tasty Passport already had a discount waiting at Nano Banana. Best discovery tool ever.”</p>
             <div class="flex items-center gap-3">
               <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=FBE6B9&color=2F140C" alt="Sarah" class="h-10 w-10 rounded-full" />
               <div class="text-sm">
@@ -327,10 +328,9 @@
               </div>
             </div>
           </div>
-
           <div class="rounded-3xl border border-latte/70 bg-white p-8 shadow-lg shadow-latte/10 hover:shadow-latte/30 transition hover:-translate-y-1">
             <div class="flex text-tangerine text-sm mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="text-cocoa/90 mb-6 leading-relaxed italic">“Levels make it addictive in a good way. I actually want to go back to the same coffee shop to unlock the VIP tasting invite.”</p>
+            <p class="text-cocoa/90 mb-6 leading-relaxed italic">“Levels make it addictive. I actually want to go back to the same coffee shop to unlock the VIP tasting invite.”</p>
             <div class="flex items-center gap-3">
               <img src="https://ui-avatars.com/api/?name=Miguel+Rodriguez&background=EA6A4A&color=fff" alt="Miguel" class="h-10 w-10 rounded-full" />
               <div class="text-sm">
@@ -339,7 +339,6 @@
               </div>
             </div>
           </div>
-
           <div class="rounded-3xl border border-latte/70 bg-white p-8 shadow-lg shadow-latte/10 hover:shadow-latte/30 transition hover:-translate-y-1">
             <div class="flex text-tangerine text-sm mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p class="text-cocoa/90 mb-6 leading-relaxed italic">“No app download, no hunting through 100 fake reviews. Just scan, eat, and feel like a local regular immediately.”</p>
@@ -363,7 +362,7 @@
                 <span class="transition group-open:rotate-180 text-tangerine">▼</span>
               </summary>
               <div class="px-6 pb-6 text-cocoa/80 text-sm leading-relaxed bg-white">
-                Nope! Tasty Passport works directly in your browser (Safari, Chrome, etc.). You can use the "Add to Home Screen" option to make it feel like an app without taking up storage space.
+                Nope! Tasty Passport works directly in your browser. You can use "Add to Home Screen" to make it feel like an app without taking up storage space.
               </div>
             </details>
             <details class="group rounded-2xl border border-latte/70 bg-white shadow-sm overflow-hidden">
@@ -372,7 +371,7 @@
                 <span class="transition group-open:rotate-180 text-tangerine">▼</span>
               </summary>
               <div class="px-6 pb-6 text-cocoa/80 text-sm leading-relaxed bg-white">
-                It is 100% free for food lovers. You pay the venue directly for your food (minus your discount, of course!).
+                It is 100% free for food lovers. You pay the venue directly for your food (minus your discount!).
               </div>
             </details>
             <details class="group rounded-2xl border border-latte/70 bg-white shadow-sm overflow-hidden">
@@ -389,7 +388,6 @@
 
       <section id="join" class="border-y border-latte/60 bg-sand relative overflow-hidden">
         <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%232F140C\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        
         <div class="max-w-4xl mx-auto px-5 md:px-8 py-20 text-center space-y-8 relative z-10">
           <div class="space-y-4">
             <span class="text-5xl animate-bounce inline-block">&#127881;</span>
@@ -399,18 +397,17 @@
               <span class="text-tangerine font-semibold">Not in your city yet?</span> Join the waitlist for a Founder's Bonus.
             </p>
           </div>
-
           <div class="bg-white rounded-3xl p-8 shadow-xl shadow-latte/20 max-w-xl mx-auto border border-latte/50 transform transition hover:scale-[1.01] duration-500">
-            <form class="flex flex-col gap-4">
+            <form class="flex flex-col gap-4" onsubmit="event.preventDefault(); alert('Thanks for joining! We will be in touch soon.');">
               <div class="text-left">
                 <label class="text-xs font-bold text-cocoa ml-2 uppercase tracking-wide">City</label>
-                <input type="text" placeholder="e.g. Lisbon, Berlin..." class="w-full px-4 py-3.5 mt-1 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream/30 transition" />
+                <input required type="text" placeholder="e.g. Lisbon, Berlin..." class="w-full px-4 py-3.5 mt-1 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream/30 transition" />
               </div>
               <div class="text-left">
                 <label class="text-xs font-bold text-cocoa ml-2 uppercase tracking-wide">Email</label>
-                <input type="email" placeholder="your@email.com" class="w-full px-4 py-3.5 mt-1 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream/30 transition" />
+                <input required type="email" placeholder="your@email.com" class="w-full px-4 py-3.5 mt-1 rounded-xl border border-latte/70 focus:border-tangerine focus:ring-2 focus:ring-tangerine/30 outline-none bg-cream/30 transition" />
               </div>
-              <button type="button" class="mt-2 w-full inline-flex items-center justify-center px-6 py-4 rounded-xl bg-tangerine text-white text-base font-bold shadow-lg shadow-tangerine/30 hover:bg-[#D95A3D] hover:scale-[1.02] transition">
+              <button type="submit" class="mt-2 w-full inline-flex items-center justify-center px-6 py-4 rounded-xl bg-tangerine text-white text-base font-bold shadow-lg shadow-tangerine/30 hover:bg-[#D95A3D] hover:scale-[1.02] transition">
                 Send me my invite &rarr;
               </button>
             </form>
@@ -419,7 +416,6 @@
               Secure & No spam.
             </p>
           </div>
-          
           <div class="pt-8 border-t border-coffee/10 mt-8">
              <p class="text-sm font-semibold text-cocoa">Are you a venue owner?</p>
              <a href="partners.html" class="text-tangerine hover:underline text-sm font-medium">Apply here to become a partner</a>
@@ -445,5 +441,22 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+        if (mobileMenu.classList.contains('mobile-menu-closed')) {
+            mobileMenu.classList.remove('mobile-menu-closed');
+            mobileMenu.classList.add('mobile-menu-open');
+        } else {
+            mobileMenu.classList.remove('mobile-menu-open');
+            mobileMenu.classList.add('mobile-menu-closed');
+        }
+    }
+
+    mobileBtn.addEventListener('click', toggleMenu);
+  </script>
 </body>
 </html>
