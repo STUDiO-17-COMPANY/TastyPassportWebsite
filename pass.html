@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <title>Team Login - Studio 17</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Space Grotesk', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            coffee: '#2F140C',
+            tangerine: '#EA6A4A',
+            sand: '#FFF3DC',
+            cream: '#FFF8EE',
+            latte: '#FBE6B9',
+            cocoa: '#7A351F',
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(234, 106, 74, 0.3)',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Remove as setas dos inputs numéricos nos browsers */
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-cream text-coffee font-display overflow-hidden">
+  
+  <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-cream via-[#FFEED4] to-cream relative p-6">
+    
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-tangerine/10 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/4"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-latte/40 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/4"></div>
+
+    <div class="w-full max-w-lg bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-latte/30 border border-latte/60 animate-fade-in relative z-10 flex flex-col items-center">
+      
+      <div class="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-coffee/5 text-coffee text-[11px] font-bold uppercase tracking-widest border border-coffee/10">
+        <span class="w-2 h-2 rounded-full bg-tangerine animate-pulse"></span>
+        Employees Only
+      </div>
+
+      <div class="text-center mb-10 w-full flex flex-col items-center">
+        
+        <img 
+            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764093036/STUDiO_17_black_zrcmyj.png" 
+            alt="Studio 17" 
+            class="h-6 w-auto mb-6 opacity-90"
+        >
+
+        <img 
+            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" 
+            alt="Tasty Passport Logo" 
+            class="h-12 w-12 rounded-xl shadow-sm mb-4"
+        >
+        
+        <h1 class="text-3xl font-bold text-coffee tracking-tight">Team Access</h1>
+        <p class="text-cocoa/60 text-sm mt-2">Enter the 7-digit security pass to continue.</p>
+      </div>
+
+      <form class="w-full space-y-8" onsubmit="event.preventDefault(); alert('Redirecting to prototypes...');">
+        
+        <div class="flex justify-center gap-2 md:gap-3" id="otp-container">
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" autofocus />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+            <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" />
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-tangerine text-white text-lg font-bold shadow-xl shadow-tangerine/30 hover:bg-[#D95A3D] hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300">
+          UNLOCK
+        </button>
+
+      </form>
+
+      <div class="mt-8 pt-6 border-t border-latte/40 text-center w-full">
+        <a href="mailto:createwithstudio17@gmail.com" class="text-xs md:text-sm text-cocoa/60 hover:text-tangerine transition font-medium">
+            Did you find a bug or a security leak? <span class="underline decoration-tangerine/50 underline-offset-2">Contact us</span>
+        </a>
+      </div>
+
+    </div>
+    
+    <div class="mt-8 text-[11px] font-bold tracking-widest text-coffee/30 uppercase">
+        @ 2025 STUDiO 17, Secure & Private.
+    </div>
+
+  </div>
+
+  <script>
+    const inputs = Array.from(document.querySelectorAll('.otp-input'));
+    const form = document.querySelector('form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    // aria-live element (create in HTML) e.g. <div id="otp-msg" aria-live="polite"></div>
+    const msg = document.getElementById('otp-msg');
+
+    // Utility: set accessible message
+    function setMsg(text) {
+      if (msg) msg.textContent = text;
+    }
+
+    // Enforce digits and single char (handles autofill/mobile quirks)
+    function sanitizeChar(ch) {
+      return (/^\d$/).test(ch) ? ch : '';
+    }
+
+    inputs.forEach((input, index) => {
+      // Make sure inputs are single-char and numeric
+      input.addEventListener('input', (e) => {
+        // keep only last numeric char typed (in case paste/autofill puts multiple)
+        const val = (e.target.value || '').slice(-1);
+        e.target.value = sanitizeChar(val);
+        if (e.target.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      // Prevent non-digit keys (optional; allow navigation keys)
+      input.addEventListener('keypress', (e) => {
+        if (!(/[0-9]/).test(e.key) && e.key.length === 1) {
+          e.preventDefault();
+        }
+      });
+
+      // Backspace behaviour
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !e.target.value) {
+          if (index > 0) {
+            inputs[index - 1].focus();
+          }
+        }
+        // Optional: allow left/right arrow navigation
+        if (e.key === 'ArrowLeft' && index > 0) {
+          inputs[index - 1].focus();
+        } else if (e.key === 'ArrowRight' && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      // Paste whole code
+      input.addEventListener('paste', (e) => {
+        e.preventDefault();
+        const text = (e.clipboardData.getData('text') || '').replace(/\s+/g, '').slice(0, inputs.length);
+        if (/^\d+$/.test(text)) {
+          text.split('').forEach((char, i) => {
+            if (inputs[i]) inputs[i].value = char;
+          });
+          const nextEmpty = Math.min(text.length, inputs.length - 1);
+          inputs[nextEmpty].focus();
+        } else {
+          // give feedback for invalid paste
+          setMsg('Paste must contain only digits.');
+        }
+      });
+
+      // Improve UX: focus on select (so clicking selects value)
+      input.addEventListener('focus', (e) => e.target.select());
+    });
+
+    async function getCodeFromInputs() {
+      return inputs.map(i => i.value || '').join('').trim();
+    }
+
+    async function setFormPending(pending = true) {
+      if (submitBtn) submitBtn.disabled = pending;
+      // optionally add a CSS class to show spinner
+      form.classList.toggle('pending', pending);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const code = await getCodeFromInputs();
+      if (code.length !== inputs.length) {
+        setMsg('Please enter the full code.');
+        return;
+      }
+
+      try {
+        setMsg('Validating...');
+        await setFormPending(true);
+
+        const res = await fetch('/api/validate-pass', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.ok) {
+          // successful — redirect to the static test.html
+          window.location.href = '/test.html';
+        } else {
+          setMsg('Invalid code. Try again.');
+          inputs.forEach(i => i.value = '');
+          inputs[0].focus();
+        }
+      } catch (err) {
+        console.error(err);
+        setMsg('Network error.');
+      } finally {
+        await setFormPending(false);
+      }
+    });
+  </script>
+</body>
+</html>
