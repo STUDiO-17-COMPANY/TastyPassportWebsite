@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tasty Passport – Apple Style Dashboard</title>
+  <style>
+    :root {
+      /* Apple Dark Mode Palette */
+      --bg-root: #000000;
+      --bg-glass: rgba(30, 30, 30, 0.65);
+      --bg-glass-strong: rgba(44, 44, 46, 0.85);
+      --bg-sidebar: rgba(28, 28, 30, 0.75);
+      --accent-blue: #0A84FF;
+      --accent-orange: #FF9F0A;
+      --accent-yellow: #FFD60A;
+      --accent-green: #30D158;
+      --accent-red: #FF453A;
+      --text-primary: #FFFFFF;
+      --text-secondary: rgba(235, 235, 245, 0.6);
+      --text-tertiary: rgba(235, 235, 245, 0.3);
+      --border-light: rgba(255, 255, 255, 0.12);
+      --radius-l: 22px;
+      --radius-m: 14px;
+      --shadow-depth: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      /* San Francisco / System Font Stack */
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-root);
+      /* macOS Monterey style Abstract Background */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(10, 132, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(255, 159, 10, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 50%, #1c1c1e 0%, #000 100%);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      font-feature-settings: "tnum"; /* Tabular numbers for data */
+    }
+
+    /* --- SIDEBAR (macOS Style) --- */
+    .sidebar {
+      width: 260px;
+      background: var(--bg-sidebar);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-right: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px;
+      z-index: 20;
+      flex-shrink: 0;
+    }
+
+    /* Traffic Lights (Window Controls Aesthetic) */
+    .window-controls {
+      display: flex; gap: 8px; margin-bottom: 24px; padding-left: 4px;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #FF5F57; }
+    .dot.yellow { background: #FEBC2E; }
+    .dot.green { background: #28C840; }
+
+    .brand-area {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 30px; padding: 0 8px;
+    }
+    .brand-logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));
+      color: #000; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 18px; box-shadow: 0 4px 12px rgba(255, 159, 10, 0.3);
+    }
+
+    .nav-label {
+      font-size: 11px; font-weight: 600; color: var(--text-tertiary);
+      text-transform: uppercase; margin: 16px 12px 8px; letter-spacing: 0.5px;
+    }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 12px; border-radius: 10px;
+      color: var(--text-secondary);
+      cursor: pointer; transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+      font-size: 13px; font-weight: 500;
+    }
+    
+    .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav-item.active { 
+      background: var(--accent-blue); 
+      color: #fff; 
+      box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+    }
+    .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+
+    /* --- MAIN AREA --- */
+    .main-content {
+      flex: 1; padding: 32px 40px; overflow-y: auto; position: relative;
+      scroll-behavior: smooth;
+    }
+
+    /* View Management */
+    .view-section { display: none; animation: fadeScale 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .view-section.active { display: block; }
+    @keyframes fadeScale { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+    /* Header */
+    .top-bar { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+    .page-title h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+    .page-title p { margin: 6px 0 0; font-size: 15px; color: var(--text-secondary); }
+
+    /* iOS Style Buttons */
+    .btn {
+      border: none; padding: 10px 20px; border-radius: 20px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: transform 0.1s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn:active { transform: scale(0.96); }
+    
+    .btn-primary {
+      background: var(--accent-blue); color: #fff;
+      box-shadow: 0 2px 10px rgba(10, 132, 255, 0.25);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: var(--text-primary);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+    /* --- CARDS & PANELS (Glassmorphism) --- */
+    .glass-panel {
+      background: var(--bg-glass);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-l);
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    /* KPI Grid */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+    .kpi-card {
+      display: flex; flex-direction: column; justify-content: space-between;
+      height: 140px; position: relative; overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-3px); }
+    
+    .kpi-icon-bg {
+      position: absolute; top: -10px; right: -10px; width: 60px; height: 60px;
+      border-radius: 50%; opacity: 0.2; filter: blur(10px);
+    }
+    
+    .kpi-label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+    .kpi-val { font-size: 34px; font-weight: 700; margin-top: 8px; letter-spacing: -1px; }
+    .kpi-badge {
+      align-self: flex-start; margin-top: auto;
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 12px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .badge-green { background: rgba(48, 209, 88, 0.15); color: var(--accent-green); }
+
+    /* Charts Layout */
+    .analytics-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+    /* Custom Chart Bars */
+    .chart-container { height: 220px; display: flex; align-items: flex-end; justify-content: space-between; padding-top: 20px; }
+    .bar-wrapper { width: 6%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; cursor: pointer; group; }
+    .bar {
+      width: 100%; border-radius: 6px 6px 6px 6px;
+      background: rgba(255,255,255,0.15);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+    .bar-wrapper:hover .bar { background: var(--accent-yellow); box-shadow: 0 0 15px rgba(255, 214, 10, 0.5); }
+    
+    /* Tooltip */
+    .bar-wrapper:hover .bar::after {
+      content: attr(data-val); position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+      background: var(--bg-glass-strong); color: #fff; padding: 4px 8px; border-radius: 6px;
+      font-size: 11px; font-weight: 600; pointer-events: none; white-space: nowrap; border: 1px solid var(--border-light);
+    }
+    .bar-label { text-align: center; margin-top: 8px; font-size: 11px; color: var(--text-secondary); }
+
+    /* List / Feed */
+    .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .feed-item {
+      display: flex; gap: 14px; align-items: center; padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .feed-item:last-child { border-bottom: none; }
+    .feed-avatar {
+      width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-size: 16px;
+      background: rgba(255,255,255,0.1);
+    }
+    .feed-info { font-size: 13px; line-height: 1.4; color: var(--text-secondary); }
+    .feed-info strong { color: var(--text-primary); font-weight: 600; }
+    .feed-time { font-size: 11px; color: var(--text-tertiary); }
+
+    /* Tables (Clean Look) */
+    table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    th { text-align: left; padding: 12px 16px; font-size: 12px; color: var(--text-tertiary); font-weight: 500; border-bottom: 1px solid var(--border-light); }
+    td { padding: 16px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; }
+    tr:hover td { background: rgba(255,255,255,0.05); }
+    tr:last-child td { border-bottom: none; }
+    
+    .user-row { cursor: pointer; }
+    .user-detail { display: flex; flex-direction: column; }
+    .user-detail span:last-child { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Modals (Apple Alert Style) */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+      z-index: 100; display: none; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .modal-overlay.open { display: flex; opacity: 1; }
+    
+    .modal {
+      width: 440px; background: var(--bg-glass-strong);
+      border: 1px solid var(--border-light); border-radius: 20px;
+      padding: 30px; box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+
+    .modal-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+    .modal-desc { font-size: 13px; color: var(--text-secondary); text-align: center; margin-bottom: 24px; line-height: 1.5; }
+
+    .input-apple {
+      width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);
+      padding: 14px; border-radius: 12px; font-size: 18px; color: #fff; text-align: center; letter-spacing: 4px;
+      margin-bottom: 20px; transition: border-color 0.2s;
+    }
+    .input-apple:focus { border-color: var(--accent-blue); }
+
+    /* Toast Notification (Dynamic Island Vibe) */
+    .toast {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+      background: #000; color: #fff; padding: 12px 24px; border-radius: 24px;
+      display: flex; align-items: center; gap: 12px; z-index: 200;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .toast.visible { transform: translateX(-50%) translateY(0); }
+
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="window-controls">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+
+    <div class="brand-area">
+      <div class="brand-logo">T</div>
+      <div style="font-weight:600; font-size: 15px; letter-spacing: -0.3px;">Tasty Passport</div>
+    </div>
+
+    <div class="nav-label">Menu</div>
+    <div class="nav-item active" onclick="switchView('dashboard')" id="nav-dashboard">
+      <div class="nav-icon">􀉉</div> Dashboard
+    </div>
+    <div class="nav-item" onclick="switchView('database')" id="nav-database">
+      <div class="nav-icon">􀉼</div>
+      Customers
+    </div>
+    <div class="nav-item" onclick="switchView('campaigns')" id="nav-campaigns">
+      <div class="nav-icon">􀌐</div>
+      Campaigns
+    </div>
+
+    <div class="nav-label">Config</div>
+    <div class="nav-item" onclick="switchView('rewards')" id="nav-rewards">
+      <div class="nav-icon">􀋉</div>
+      Rewards
+    </div>
+    <div class="nav-item" onclick="switchView('settings')" id="nav-settings">
+      <div class="nav-icon">􀍟</div>
+      Settings
+    </div>
+
+    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-light); display: flex; align-items: center; gap: 12px;">
+      <div style="width: 36px; height: 36px; border-radius: 50%; background: #555; overflow: hidden;">
+         <div style="width:100%; height:100%; background: linear-gradient(#555, #333);"></div>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 600;">The Coffee Spot</div>
+        <div style="font-size: 11px; color: var(--text-tertiary);">Pro Plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    
+    <div class="top-bar">
+      <div class="page-title">
+        <h1 id="page-title">Overview</h1>
+        <p id="page-desc">Sunday, 12 November</p>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button class="btn btn-secondary" onclick="exportData()">
+          <span>􀈂</span> Export
+        </button>
+        <button class="btn btn-primary" onclick="openModal('verifyModal')">
+          <span>􀋊</span> Verify Scan
+        </button>
+      </div>
+    </div>
+
+    <div id="view-dashboard" class="view-section active">
+      
+      <div class="kpi-grid">
+        <div class="glass-panel kpi-card">
+          <div class="kpi-icon-bg" style="background: var(--accent-blue);"></div>
+          <div class="kpi-label">Active Users</div>
+          <div class="kpi-val">1,248</div>
+          <div class="kpi-badge badge-green">􀄨 +12%</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-icon-bg" style="background: var(--accent-yellow);"></div>
+          <div class="kpi-label">Revenue Impact</div>
+          <div class="kpi-val">$14k</div>
+          <div class="kpi-badge badge-green">􀄨 +8.4%</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-icon-bg" style="background: var(--accent-orange);"></div>
+          <div class="kpi-label">New Signups</div>
+          <div class="kpi-val">186</div>
+          <div class="kpi-badge badge-green">􀄨 +24%</div>
+        </div>
+        <div class="glass-panel kpi-card">
+          <div class="kpi-icon-bg" style="background: var(--accent-red);"></div>
+          <div class="kpi-label">Redemptions</div>
+          <div class="kpi-val" id="kpi-redemptions">342</div>
+          <div class="kpi-badge" style="color:var(--text-tertiary)">Last 30 days</div>
+        </div>
+      </div>
+
+      <div class="analytics-layout">
+        
+        <div class="glass-panel">
+          <div class="list-header">
+            <span style="font-weight:600; font-size:15px;">Yearly Activity</span>
+            <div style="background:rgba(0,0,0,0.3); border-radius: 8px; padding: 2px; display: flex;">
+               <div style="padding: 4px 12px; font-size: 11px; background: rgba(255,255,255,0.15); border-radius: 6px; color: #fff;">Visits</div>
+               <div style="padding: 4px 12px; font-size: 11px; color: var(--text-tertiary); cursor: pointer;">Sales</div>
+            </div>
+          </div>
+          <div class="chart-container" id="chart-bars">
+            </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="list-header">
+            <span style="font-weight:600; font-size:15px;">Live Pulse</span>
+          </div>
+          <div id="feed-container" style="display: flex; flex-direction: column; gap: 4px;">
+            </div>
+        </div>
+      </div>
+
+      <div class="glass-panel">
+        <div class="list-header">
+           <span style="font-weight:600; font-size:15px;">Recent VIP Customers</span>
+           <span style="font-size:12px; color:var(--accent-blue); cursor: pointer;" onclick="switchView('database')">See All 􀆊</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Tier</th><th>Points</th><th>LTV</th></tr>
+          </thead>
+          <tbody id="dash-table-body">
+            </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div id="view-database" class="view-section">
+      <div class="glass-panel">
+        <div class="list-header">
+           <input type="text" placeholder="􀊫 Search database..." style="background: rgba(0,0,0,0.2); border: none; padding: 8px 12px; border-radius: 8px; color: white; width: 300px; font-size: 13px;" onkeyup="filterTable(this.value)">
+        </div>
+        <table>
+          <thead>
+            <tr><th>Customer</th><th>Status</th><th>Total Points</th><th>Last Visit</th><th>Lifetime Value</th></tr>
+          </thead>
+          <tbody id="full-database-body">
+             </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="view-campaigns" class="view-section" style="text-align:center; padding-top:100px; color:var(--text-tertiary);">
+      <h1>Campaigns</h1>
+      <p>Manage your email and push notifications here.</p>
+    </div>
+    <div id="view-rewards" class="view-section" style="text-align:center; padding-top:100px; color:var(--text-tertiary);">
+      <h1>Rewards</h1>
+      <p>Configure points and redemption values.</p>
+    </div>
+    <div id="view-settings" class="view-section" style="text-align:center; padding-top:100px; color:var(--text-tertiary);">
+      <h1>Settings</h1>
+      <p>Manage your venue profile.</p>
+    </div>
+
+  </main>
+
+  <div class="modal-overlay" id="verifyModal">
+    <div class="modal">
+      <div class="modal-title">Redeem Reward</div>
+      <div class="modal-desc">Ask the customer for the 6-digit security code displayed on their phone.</div>
+      
+      <input type="text" class="input-apple" id="verifyInput" maxlength="6" placeholder="000000" autofocus>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <button class="btn btn-secondary" style="justify-content: center;" onclick="closeModal('verifyModal')">Cancel</button>
+        <button class="btn btn-primary" style="justify-content: center;" onclick="processVerify()">Confirm</button>
+      </div>
+      <p style="margin-top: 20px; font-size: 11px; color: var(--text-tertiary); text-align: center;">Try code: 123456</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="userModal">
+    <div class="modal">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div id="u-avatar" style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #5AC8FA); margin: 0 auto 16px; font-size: 32px; font-weight: 700; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">JD</div>
+        <h2 id="u-name" style="margin: 0; font-size: 22px;">John Doe</h2>
+        <p id="u-email" style="margin: 4px 0 0; font-size: 13px; color: var(--text-secondary);">john@example.com</p>
+        <div id="u-tier" style="margin-top: 8px; display: inline-block; padding: 4px 12px; background: rgba(255,214,10,0.2); color: var(--accent-yellow); border-radius: 20px; font-size: 11px; font-weight: 600;">Gold Member</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 24px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 12px;">
+         <div style="text-align: center;">
+            <div style="font-size: 16px; font-weight: 700;" id="u-points">0</div>
+            <div style="font-size: 10px; color: var(--text-tertiary); text-transform: uppercase;">Points</div>
+         </div>
+         <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 16px; font-weight: 700;" id="u-visits">0</div>
+            <div style="font-size: 10px; color: var(--text-tertiary); text-transform: uppercase;">Visits</div>
+         </div>
+         <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 16px; font-weight: 700;" id="u-ltv">$0</div>
+            <div style="font-size: 10px; color: var(--text-tertiary); text-transform: uppercase;">LTV</div>
+         </div>
+      </div>
+      
+      <button class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="closeModal('userModal')">Close Profile</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <div style="width: 24px; height: 24px; background: var(--accent-green); border-radius: 50%; display: grid; place-items: center; color: #000; font-size: 14px;">✓</div>
+    <span id="toast-msg" style="font-weight: 500; font-size: 14px;">Success</span>
+  </div>
+
+  <script>
+    /* --- DATA --- */
+    const users = [
+      { name: "Alex Johnson", email: "alex.j@icloud.com", tier: "Gold", points: 4250, visits: 42, ltv: 840, last: "Today" },
+      { name: "Samantha Lee", email: "sam.lee@gmail.com", tier: "Blue", points: 1120, visits: 12, ltv: 215, last: "Yesterday" },
+      { name: "Davide Rossi", email: "rossi.d@design.it", tier: "Gold", points: 3890, visits: 38, ltv: 760, last: "3 days ago" },
+      { name: "Sarah Connor", email: "s.connor@sky.net", tier: "Silver", points: 1850, visits: 15, ltv: 400, last: "5 days ago" },
+      { name: "Mike Ross", email: "m.ross@law.com", tier: "Blue", points: 450, visits: 5, ltv: 80, last: "1 week ago" }
+    ];
+
+    const feedData = [
+      { user: "Sarah C.", action: "redeemed Free Coffee", time: "2m", icon: "☕️", color: "var(--accent-yellow)" },
+      { user: "Davide R.", action: "reached Gold Tier", time: "14m", icon: "⭐️", color: "var(--accent-orange)" },
+      { user: "New User", action: "signed up via QR", time: "1h", icon: "👋", color: "var(--accent-blue)" }
+    ];
+
+    const chartData = [35, 42, 45, 40, 55, 68, 70, 84, 61, 75, 89, 95];
+    const months = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+
+    /* --- INITIALIZATION --- */
+    window.onload = () => {
+      renderChart();
+      renderFeed();
+      renderTables();
+    }
+
+    /* --- RENDERERS --- */
+    function renderChart() {
+      const container = document.getElementById('chart-bars');
+      let html = '';
+      chartData.forEach((val, i) => {
+        let height = val + '%';
+        html += `
+          <div class="bar-wrapper">
+            <div class="bar" style="height: ${height};" data-val="${val}"></div>
+            <div class="bar-label">${months[i]}</div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderFeed() {
+      const container = document.getElementById('feed-container');
+      container.innerHTML = feedData.map(item => `
+        <div class="feed-item">
+          <div class="feed-avatar" style="color: ${item.color}; background: rgba(255,255,255,0.05);">${item.icon}</div>
+          <div class="feed-info">
+             <strong>${item.user}</strong> ${item.action}<br>
+             <span class="feed-time">${item.time} ago</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getTierColor(tier) {
+      if(tier === 'Gold') return 'var(--accent-yellow)';
+      if(tier === 'Silver') return '#E0E0E0';
+      return 'var(--accent-blue)';
+    }
+
+    function renderTables() {
+      // Dash Table
+      document.getElementById('dash-table-body').innerHTML = users.slice(0,3).map(u => createRow(u)).join('');
+      // Full Table
+      renderFullTable(users);
+    }
+
+    function createRow(u) {
+      return `
+        <tr class="user-row" onclick="openProfile('${u.email}')">
+          <td>
+            <div class="user-detail">
+              <span style="font-weight: 600;">${u.name}</span>
+              <span>${u.email}</span>
+            </div>
+          </td>
+          <td><span style="color: ${getTierColor(u.tier)}; font-weight:500;">${u.tier}</span></td>
+          <td>${u.points.toLocaleString()}</td>
+          <td>$${u.ltv}</td>
+        </tr>
+      `;
+    }
+
+    function renderFullTable(data) {
+      document.getElementById('full-database-body').innerHTML = data.map(u => createRow(u)).join('');
+    }
+
+    /* --- LOGIC --- */
+    function switchView(id) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.getElementById('view-' + id).classList.add('active');
+      
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('nav-' + id).classList.add('active');
+
+      const titles = {
+        'dashboard': 'Overview',
+        'database': 'Customers',
+        'campaigns': 'Campaigns',
+        'rewards': 'Rewards',
+        'settings': 'Settings'
+      };
+      document.getElementById('page-title').innerText = titles[id];
+    }
+
+    function filterTable(val) {
+      const lower = val.toLowerCase();
+      const filtered = users.filter(u => u.name.toLowerCase().includes(lower) || u.email.toLowerCase().includes(lower));
+      renderFullTable(filtered);
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      if(id === 'verifyModal') document.getElementById('verifyInput').value = '';
+    }
+    
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function openProfile(email) {
+      const u = users.find(x => x.email === email);
+      if(!u) return;
+      document.getElementById('u-name').innerText = u.name;
+      document.getElementById('u-email').innerText = u.email;
+      document.getElementById('u-avatar').innerText = u.name.charAt(0);
+      document.getElementById('u-tier').innerText = u.tier + " Member";
+      document.getElementById('u-points').innerText = u.points;
+      document.getElementById('u-visits').innerText = u.visits;
+      document.getElementById('u-ltv').innerText = '$'+u.ltv;
+      openModal('userModal');
+    }
+
+    function processVerify() {
+      const val = document.getElementById('verifyInput').value;
+      if(val === '123456') {
+        closeModal('verifyModal');
+        showToast('Reward Redeemed Successfully');
+        // Update number
+        const num = document.getElementById('kpi-redemptions');
+        num.innerText = parseInt(num.innerText) + 1;
+      } else {
+        alert('Invalid Code');
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 3000);
+    }
+
+    function exportData() {
+      showToast('Exporting CSV...');
+    }
+
+    // Live feed simulation
+    setInterval(() => {
+       const actions = [
+         { user: "Mike R.", action: "visited", icon: "📍", color: "#fff" },
+         { user: "Anna K.", action: "redeemed Cake", icon: "🍰", color: "var(--accent-red)" }
+       ];
+       const item = actions[Math.floor(Math.random()*actions.length)];
+       const html = `
+        <div class="feed-item" style="animation: fadeScale 0.5s">
+          <div class="feed-avatar" style="color: ${item.color}; background: rgba(255,255,255,0.05);">${item.icon}</div>
+          <div class="feed-info">
+             <strong>${item.user}</strong> ${item.action}<br>
+             <span class="feed-time">Just now</span>
+          </div>
+        </div>
+       `;
+       const container = document.getElementById('feed-container');
+       container.insertAdjacentHTML('afterbegin', html);
+       if(container.children.length > 5) container.lastElementChild.remove();
+    }, 8000);
+
+  </script>
+</body>
+</html>

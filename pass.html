@@ -84,7 +84,7 @@
         <p class="text-cocoa/60 text-sm mt-2">Enter the 7-digit security pass to continue.</p>
       </div>
 
-      <form class="w-full space-y-8" onsubmit="event.preventDefault(); alert('Redirecting to prototypes...');">
+      <form class="w-full space-y-8" onsubmit="event.preventDefault(); alert('Code inserted...');">
         
         <div class="flex justify-center gap-2 md:gap-3" id="otp-container">
             <input type="text" maxlength="1" class="otp-input w-10 h-14 md:w-12 md:h-16 text-center text-2xl md:text-3xl font-bold bg-cream/30 border border-latte rounded-xl focus:border-tangerine focus:ring-2 focus:ring-tangerine/20 focus:outline-none transition-all text-coffee placeholder-transparent shadow-inner" inputmode="numeric" autofocus />
@@ -219,7 +219,7 @@
 
         if (res.ok && data.ok) {
           // successful — redirect to the static test.html
-          window.location.href = '/test.html';
+          window.location.href = '/chooseDashboard.html';
         } else {
           setMsg('Invalid code. Try again.');
           inputs.forEach(i => i.value = '');
