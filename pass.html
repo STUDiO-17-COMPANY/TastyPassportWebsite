@@ -209,7 +209,7 @@
         setMsg('Validating...');
         await setFormPending(true);
 
-        const res = await fetch('/api/validate-pass', {
+        const res = await fetch('pages/api/validate-pass', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code })
