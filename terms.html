@@ -1,68 +1,580 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Terms & Conditions — Work in Progress | Tasty Passport</title>
-    <meta name="description" content="Terms and conditions (work in progress) for Tasty Passport. This page will describe the rules for using the service." />
-    <style>
-        :root{--bg:#fbfbfc;--card:#fff;--muted:#6b7280;--accent:#ff6b6b}
-        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#0f172a;line-height:1.5}
-        .wrap{max-width:900px;margin:48px auto;padding:24px}
-        header{display:flex;gap:16px;align-items:center}
-        h1{margin:.25rem 0;font-size:1.75rem}
-        .badge{background:var(--accent);color:#fff;padding:.25rem .5rem;border-radius:6px;font-weight:600;font-size:.9rem}
-        .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,.06);margin-top:18px}
-        .muted{color:var(--muted)}
-        ul.planned{margin:12px 0 0 1.2rem}
-        footer{margin-top:20px;font-size:.9rem;color:var(--muted)}
-        .actions{margin-top:18px;display:flex;gap:8px}
-        a.button{display:inline-block;padding:8px 12px;background:#111827;color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
-        a.link{color:var(--accent);text-decoration:none}
-        .section-placeholder{border-left:3px dashed #e6e7eb;padding:12px;margin:12px 0;border-radius:6px;background:linear-gradient(180deg,#ffffff,#fbfbfd)}
-    </style>
+  <meta charset="UTF-8" />
+  <title>Tasty Passport – Terms & Conditions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Font & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Terms & Conditions for using Tasty Passport, the web-based discovery and loyalty platform for food lovers and venues." />
+  <meta property="og:title" content="Tasty Passport – Terms & Conditions" />
+  <meta property="og:description" content="Read the Terms that govern your use of the Tasty Passport platform." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (same as main site) -->
+  <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" />
+
+  <!-- Tailwind config to match main site -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Space Grotesk', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            coffee: '#2F140C',
+            tangerine: '#EA6A4A',
+            sand: '#FFF3DC',
+            cream: '#FFF8EE',
+            latte: '#FBE6B9',
+            cocoa: '#7A351F',
+          },
+          boxShadow: {
+            'glow': '0 0 20px rgba(234, 106, 74, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFF8EE; }
+    ::-webkit-scrollbar-thumb { background: #FBE6B9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #EA6A4A; }
+
+    /* Mobile Menu Animation (simple open/close) */
+    #mobile-menu {
+      transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+      overflow: hidden;
+    }
+    .mobile-menu-closed {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+    }
+    .mobile-menu-open {
+      max-height: 260px;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body>
-    <main class="wrap" role="main" aria-labelledby="page-title">
-        <header>
-            <div class="badge" aria-hidden="true">WIP</div>
-            <h1 id="page-title">Terms & Conditions — Work in Progress</h1>
-        </header>
 
-        <p class="muted">This page will set out the terms governing use of Tasty Passport. The full terms will be published here soon. Below is a short summary and the planned sections.</p>
+<body class="min-h-screen bg-cream text-coffee font-display overflow-x-hidden">
+  <div class="min-h-screen flex flex-col bg-gradient-to-b from-cream via-[#FFEED4] to-cream">
 
-        <section class="card" aria-labelledby="summary">
-            <h2 id="summary">Summary</h2>
-            <p class="muted">These terms describe permitted use of the site and services, user responsibilities, content rules, and limitations of liability. They will clarify account requirements, payment and refund policies (if any), and dispute resolution.</p>
+    <!-- HEADER (simplified, but same vibe) -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-latte/60 transition-all duration-300">
+      <div class="max-w-6xl mx-auto px-5 md:px-8 py-3 md:py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html#top" class="flex items-center gap-3 group">
+            <img 
+              src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" 
+              alt="Tasty Passport Icon" 
+              class="h-10 w-10 rounded-xl shadow-lg shadow-tangerine/20 group-hover:scale-105 transition duration-300"
+            >
+            <img 
+              src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764336914/Logo_Text_Only_ar2jck.svg" 
+              alt="Tasty Passport" 
+              class="h-6 w-auto mt-1"
+            >
+          </a>
 
-            <div class="section-placeholder" aria-hidden="true">
-                <strong>Planned sections</strong>
-                <ul class="planned">
-                    <li>Acceptance of terms and changes</li>
-                    <li>Eligibility and account creation</li>
-                    <li>User conduct and prohibited activities</li>
-                    <li>Content ownership and licenses</li>
-                    <li>Payments, refunds, and billing (if applicable)</li>
-                    <li>Privacy and data handling (link to privacy policy)</li>
-                    <li>Limitation of liability and disclaimers</li>
-                    <li>Termination and account suspension</li>
-                    <li>Governing law and dispute resolution</li>
-                    <li>How to contact us about terms</li>
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-cocoa">
+            <a href="index.html#how-it-works" class="hover:text-tangerine transition">How it works</a>
+            <a href="index.html#rewards" class="hover:text-tangerine transition">Rewards</a>
+            <a href="index.html#faq" class="hover:text-tangerine transition">FAQ</a>
+            <a href="privacy.html" class="hover:text-tangerine transition">Privacy</a>
+            <a href="terms.html" class="text-tangerine">Terms</a>
+            <a 
+              href="index.html#join" 
+              class="inline-flex items-center rounded-full bg-tangerine text-white px-4 py-2 shadow-sm hover:shadow-glow transition"
+            >
+              Get early access
+            </a>
+          </nav>
+
+          <!-- Mobile button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-coffee focus:outline-none">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile nav -->
+        <div 
+          id="mobile-menu" 
+          class="mobile-menu-closed md:hidden space-y-3 pt-4 pb-3 border-t border-latte/30 mt-3 text-center text-sm font-medium text-cocoa"
+        >
+          <a href="index.html#how-it-works" class="block hover:text-tangerine" onclick="toggleMenu()">How it works</a>
+          <a href="index.html#rewards" class="block hover:text-tangerine" onclick="toggleMenu()">Rewards</a>
+          <a href="index.html#faq" class="block hover:text-tangerine" onclick="toggleMenu()">FAQ</a>
+          <a href="privacy.html" class="block hover:text-tangerine" onclick="toggleMenu()">Privacy</a>
+          <a href="terms.html" class="block text-tangerine" onclick="toggleMenu()">Terms</a>
+          <a 
+            href="index.html#join" 
+            class="inline-block bg-tangerine text-white px-5 py-2 rounded-full font-semibold mt-1 hover:shadow-glow"
+            onclick="toggleMenu()"
+          >
+            Get Early Access
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main id="top" class="flex-1">
+      <section class="max-w-4xl mx-auto px-5 md:px-8 py-12 md:py-16 lg:py-20">
+        <!-- Hero / Title -->
+        <div class="mb-8 md:mb-10">
+          <p class="inline-flex items-center gap-2 rounded-full border border-latte bg-white/80 px-3 py-1 text-xs font-medium text-cocoa/80 mb-4">
+            Legal Stuff · Please read carefully
+          </p>
+          <h1 class="text-3xl md:text-4xl font-semibold text-coffee tracking-tight mb-3">
+            Terms &amp; Conditions
+          </h1>
+          <p class="text-sm text-cocoa/70">
+            Last updated: <span class="font-medium">2 December 2025</span>
+          </p>
+        </div>
+
+        <!-- TL;DR card -->
+        <div class="mb-10">
+          <div class="bg-white/90 backdrop-blur-sm border border-latte rounded-3xl shadow-lg shadow-latte/40 p-6 md:p-7 space-y-3">
+            <h2 class="text-lg md:text-xl font-semibold text-coffee flex items-center gap-2">
+              TL;DR (not legally binding)
+              <span class="inline-flex items-center justify-center text-xs px-2 py-0.5 rounded-full bg-sand text-cocoa/80 border border-latte">
+                Friendly summary
+              </span>
+            </h2>
+            <ul class="list-disc pl-5 space-y-1.5 text-sm text-cocoa/90">
+              <li>Tasty Passport helps you discover venues and unlock discounts and loyalty rewards.</li>
+              <li>We don’t cook or serve food and we don’t process your payments – that’s between you and the venue.</li>
+              <li>The Service is for users aged <strong>18+ only</strong>. By using it, you confirm you are at least 18.</li>
+              <li>Don’t try to cheat the system (fake visits, bots, etc.) or misuse the platform.</li>
+              <li>Venues are responsible for their own offers and for the quality and legality of what they provide.</li>
+              <li>Our Privacy Policy explains how we use your personal data under GDPR.</li>
+              <li>We limit our liability as far as the law allows (the Service is provided “as is” and is typically free for users).</li>
+              <li>If you have any issues, contact us at <a href="mailto:info@tastypassport.online" class="text-tangerine hover:underline">info@tastypassport.online</a>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Terms content -->
+        <div class="bg-white/90 backdrop-blur-sm border border-latte rounded-3xl shadow-lg shadow-latte/40 p-6 md:p-8 space-y-8 text-sm md:text-base leading-relaxed text-cocoa">
+          
+          <!-- 1. Introduction -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">1. Introduction</h2>
+            <p>
+              These Terms &amp; Conditions (“<strong>Terms</strong>”) govern your access to and use of:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>The Tasty Passport website at <a href="https://www.tastypassport.online" class="text-tangerine hover:underline">https://www.tastypassport.online</a>; and</li>
+              <li>Our web app and related services that help you discover venues, claim deals and unlock rewards</li>
+            </ul>
+            <p>
+              (together, the “<strong>Service</strong>”).
+            </p>
+            <p>
+              The Service is operated by <strong>STUDiO 17 LTD</strong> (“<strong>Tasty Passport</strong>”, “<strong>we</strong>”, “<strong>us</strong>” or “<strong>our</strong>”). 
+              You can contact us at <a href="mailto:info@tastypassport.online" class="text-tangerine hover:underline">info@tastypassport.online</a>.
+            </p>
+            <p>
+              By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, you must not use the Service.
+            </p>
+            <p>
+              Your use of the Service is also subject to our <a href="privacy.html" class="text-tangerine hover:underline">Privacy Policy</a>, which explains how we process your personal data under the General Data Protection Regulation (EU) 2016/679 (“<strong>GDPR</strong>”) and other applicable laws. Please read it carefully.
+            </p>
+          </section>
+
+          <!-- 2. Who may use the Service -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">2. Who may use the Service</h2>
+
+            <h3 class="text-base md:text-lg font-semibold text-coffee mt-2">2.1 Age requirement (18+)</h3>
+            <p>
+              The Service is intended only for users who are at least <strong>18 years old</strong>.
+            </p>
+            <p>
+              By accessing or using the Service, you represent and warrant that:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>You are at least 18 years of age; and</li>
+              <li>Any information you provide to us is true, accurate and complete.</li>
+            </ul>
+            <p>
+              We do not knowingly allow individuals under 18 to use the Service or to create an account.
+            </p>
+
+            <h3 class="text-base md:text-lg font-semibold text-coffee mt-2">2.2 If we discover someone under 18 is using the Service</h3>
+            <p>
+              If we become aware, or have reasonable grounds to believe, that someone under 18 is using the Service:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>We may suspend or terminate their access to the Service; and</li>
+              <li>We will take reasonable steps to delete their account and associated personal data, except where we need to keep certain information to comply with legal obligations (for example, to demonstrate how we handled the situation).</li>
+            </ul>
+            <p>
+              If you believe that someone under 18 is using Tasty Passport, please contact us at 
+              <a href="mailto:info@tastypassport.online" class="text-tangerine hover:underline">info@tastypassport.online</a> 
+              with enough information to help us investigate (for example, the email address or account identifier). We will review the situation and take appropriate action.
+            </p>
+          </section>
+
+          <!-- 3. Description of the Service -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">3. Description of the Service</h2>
+            <p>
+              Tasty Passport is a web-based discovery and loyalty platform that:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>Helps food lovers find curated venues (cafés, restaurants, bars, etc.) and access discounts and rewards; and</li>
+              <li>Provides venues with tools to run welcome offers and loyalty ladders, track visits and engagement, and view anonymised or pseudonymised performance data.</li>
+            </ul>
+            <p><strong>Important points:</strong></p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>We are <strong>not</strong> a restaurant or venue. We do not prepare or serve food or drinks.</li>
+              <li>We are <strong>not</strong> a payment processor. You pay the venue directly; we do not charge you for your meal or handle your payment to the venue.</li>
+              <li>Deals and rewards are offered by the participating venues, subject to their own conditions (for example, minimum spend, exclusions, time windows).</li>
+              <li>Availability of venues, deals and rewards may change at any time.</li>
+            </ul>
+          </section>
+
+          <!-- 4. Your account and security -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">4. Your account and security</h2>
+            <p>
+              We may allow you to create an account or access the Service via a unique link, code or login method.
+            </p>
+            <p>
+              You are responsible for:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>Maintaining the confidentiality of any login details, codes or access links associated with your account;</li>
+              <li>All activities that occur under your account; and</li>
+              <li>Notifying us promptly if you suspect unauthorised access or use.</li>
+            </ul>
+            <p>
+              We reserve the right to refuse registration, suspend or terminate accounts at our discretion (see Section 11).
+            </p>
+          </section>
+
+          <!-- 5. Use of the Service -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">5. Use of the Service</h2>
+            <p>
+              You agree to use the Service only for lawful purposes and in accordance with these Terms. In particular, you must not:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>Attempt to game or abuse the rewards system (for example, falsifying visits, scanning QR codes without genuinely visiting the venue, using bots or fake accounts);</li>
+              <li>Interfere with or disrupt the Service, servers or networks;</li>
+              <li>Access or attempt to access parts of the Service you are not authorised to use;</li>
+              <li>Reverse engineer, decompile or attempt to extract source code from the Service;</li>
+              <li>Use the Service to transmit any harmful, fraudulent, defamatory, offensive or unlawful content;</li>
+              <li>Use the Service in a way that violates any applicable laws or regulations, or that infringes the rights of others (including privacy and intellectual property rights).</li>
+            </ul>
+            <p>
+              We may monitor general usage patterns and take reasonable steps to detect and prevent abuse.
+            </p>
+          </section>
+
+          <!-- 6. Deals, rewards and venue responsibilities -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">6. Deals, rewards and venue responsibilities</h2>
+
+            <h3 class="text-base md:text-lg font-semibold text-coffee mt-2">6.1 Deals and loyalty ladders</h3>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>When you claim or redeem a deal through Tasty Passport, you are entering into a direct relationship with the venue, not with Tasty Passport.</li>
+              <li>Each deal or reward may be subject to conditions set by the venue (for example, minimum spend, dine-in only, excluded items, time/day restrictions, one per table).</li>
+              <li>Venues may modify, pause or discontinue specific deals, rewards or participation in Tasty Passport at any time.</li>
+            </ul>
+            <p>
+              We do not guarantee:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>That any particular venue, deal or reward will be available when you arrive; or</li>
+              <li>That prices, menus or descriptions on the Service will always be accurate, as these are controlled by the venues.</li>
+            </ul>
+
+            <h3 class="text-base md:text-lg font-semibold text-coffee mt-2">6.2 Venue responsibilities</h3>
+            <p>
+              Venues are solely responsible for:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>Setting and honouring their own offers, discounts and rewards;</li>
+              <li>The quality, safety and legality of food, drinks and service;</li>
+              <li>Compliance with all applicable laws and regulations (including health and safety, pricing, employment, licensing and consumer protection).</li>
+            </ul>
+            <p>
+              Tasty Passport is not a party to any transaction between you and a venue and has no control over their operations.
+            </p>
+            <p>
+              If you have an issue with a venue (for example, service quality or bill disputes), you should first address it with the venue directly. You can also contact us so we can investigate from a platform perspective and decide whether to take action (for example, reviewing their participation in Tasty Passport).
+            </p>
+          </section>
+
+          <!-- 7. Venue / business accounts -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">7. Venue / business accounts</h2>
+            <p>
+              If you use the Service as or on behalf of a venue or other business:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>You represent and warrant that you have authority to bind that venue or business to these Terms;</li>
+              <li>You agree to provide accurate venue information (name, address, opening hours, offers, descriptions, photos, etc.) and keep it up to date;</li>
+              <li>You are responsible for any discounts or rewards you configure, and for ensuring your staff understand how to validate and honour them.</li>
+            </ul>
+            <p>
+              We may provide you with access to a dashboard or tools containing performance data (for example, visits, redemptions, ladder progression). You must use this data solely for internal business purposes and in compliance with applicable data protection laws and our Privacy Policy.
+            </p>
+          </section>
+
+          <!-- 8. Intellectual property -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">8. Intellectual property</h2>
+            <p>
+              Unless otherwise stated, Tasty Passport owns or licenses all rights, title and interest in and to the Service, including:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>The Tasty Passport name, logo, branding and visual identity;</li>
+              <li>The design, layout, look and feel of the Site and web app;</li>
+              <li>The underlying software, databases and content (excluding content provided by venues or users).</li>
+            </ul>
+            <p>
+              We grant you a limited, non-exclusive, non-transferable, revocable licence to access and use the Service for your personal (or, for venues, internal business) use, in accordance with these Terms.
+            </p>
+            <p>
+              You may not:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>Copy, modify, distribute, sell, lease or sublicense any part of the Service without our prior written permission; or</li>
+              <li>Use our trademarks, logos or branding without our prior written permission.</li>
+            </ul>
+          </section>
+
+          <!-- 9. User content and feedback -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">9. User content and feedback</h2>
+            <p>
+              If you submit content or feedback to us (for example: suggestions, comments, testimonials, logos or photos you provide as a venue), you grant Tasty Passport a worldwide, non-exclusive, royalty-free licence to use, reproduce, display, adapt and distribute that content:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>For operating, maintaining and improving the Service; and</li>
+              <li>For marketing and promotional purposes, where appropriate.</li>
+            </ul>
+            <p>
+              You promise that:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>You have the necessary rights and permissions to grant this licence; and</li>
+              <li>Your content does not infringe the rights of others or violate any laws.</li>
+            </ul>
+            <p>
+              You can request that we stop using certain content for future marketing by contacting us, although this may not affect materials already created or distributed.
+            </p>
+          </section>
+
+          <!-- 10. Privacy -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">10. Privacy</h2>
+            <p>
+              Your use of the Service is also governed by our <a href="privacy.html" class="text-tangerine hover:underline">Privacy Policy</a>, which explains in more detail:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>What personal data we collect;</li>
+              <li>For what purposes and on what legal bases under GDPR (for example, performance of a contract for core features, legitimate interests for certain analytics, and consent for marketing where required);</li>
+              <li>How long we keep your data;</li>
+              <li>With whom we share it (for example, service providers and venues, where applicable); and</li>
+              <li>Your rights under GDPR (such as access, rectification, erasure, restriction, objection and data portability), and how you can exercise them.</li>
+            </ul>
+            <p>
+              By using the Service, you acknowledge that we will process your personal data in accordance with the Privacy Policy in place at the time of your use.
+            </p>
+          </section>
+
+          <!-- 11. Suspension and termination -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">11. Suspension and termination</h2>
+            <p>
+              We may suspend or terminate your access to the Service (including any account you hold) at any time, without prior notice, if we reasonably believe that:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>You have violated these Terms or any applicable law;</li>
+              <li>Your use of the Service risks harm to the Service, to other users, to venues or to us; or</li>
+              <li>We are required to do so by law or by a competent authority.</li>
+            </ul>
+            <p>
+              Where appropriate, we will let you know why we have taken such action and, where possible, give you an opportunity to respond.
+            </p>
+            <p>
+              You may stop using the Service at any time. If you wish to delete your account, you can contact us at 
+              <a href="mailto:info@tastypassport.online" class="text-tangerine hover:underline">info@tastypassport.online</a>.
+            </p>
+            <p>
+              We will handle your request in line with our Privacy Policy and applicable data protection laws (including GDPR), which may mean we retain certain information for a limited period where we have a legal obligation or legitimate interest to do so.
+            </p>
+          </section>
+
+          <!-- 12. Disclaimers -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">12. Disclaimers</h2>
+            <p>
+              The Service is provided on an “as is” and “as available” basis.
+            </p>
+            <p>
+              To the fullest extent permitted by law, we do not make any warranties or representations that:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>The Service will be uninterrupted, secure or error-free;</li>
+              <li>All information (including venue details, menus, prices and availability) will always be accurate, complete or up to date; or</li>
+              <li>Any particular venue, deal or reward will meet your expectations or be available at a specific time.</li>
+            </ul>
+            <p>
+              We specifically disclaim responsibility for:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>The quality, safety, legality or fitness for purpose of any food, drinks or services provided by venues;</li>
+              <li>Any act or omission of venues or their staff; and</li>
+              <li>Third-party websites or services linked from the Service.</li>
+            </ul>
+            <p>
+              Some jurisdictions do not allow the exclusion of certain warranties, so some of the above exclusions may not apply to you.
+            </p>
+          </section>
+
+          <!-- 13. Limitation of liability -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">13. Limitation of liability</h2>
+            <p>
+              To the maximum extent permitted by law:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>
+                Tasty Passport and its founders, employees, contractors and partners shall not be liable for any indirect, incidental, consequential, special or punitive damages, 
+                or any loss of profits, revenue, data or goodwill, arising out of or relating to your use of (or inability to use) the Service; and
+              </li>
+              <li>
+                Our total aggregate liability for any claims arising out of or relating to the Service or these Terms shall be limited to the greater of:
+                <ul class="list-disc pl-5 mt-1.5 space-y-1.5">
+                  <li><strong>€100</strong>; or</li>
+                  <li>The total amount (if any) you have paid directly to Tasty Passport for the Service in the 12 months before the event giving rise to the claim.</li>
                 </ul>
-            </div>
+              </li>
+            </ul>
+            <p>
+              Nothing in these Terms excludes or limits liability that cannot be excluded or limited under applicable law (for example, liability for death or personal injury caused by negligence, or for fraud). Your mandatory statutory rights as a consumer are not affected.
+            </p>
+          </section>
 
-            <div class="actions" role="note" aria-label="actions">
-                <a class="button" href="mailto:info@tastypassport.online?subject=Terms%20and%20Conditions%20inquiry">Contact legal team</a>
-                <a class="link" href="index.html">Return to site</a>
-            </div>
+          <!-- 14. Changes -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">14. Changes to the Service and to these Terms</h2>
+            <p>
+              We may modify or discontinue parts of the Service at any time (for example, adding new features or retiring old ones).
+            </p>
+            <p>
+              We may also update these Terms from time to time. When we do:
+            </p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li>We will update the “Last updated” date at the top; and</li>
+              <li>For material changes, we may provide additional notice (for example, by email or an in-app message).</li>
+            </ul>
+            <p>
+              If you continue to use the Service after changes take effect, you are deemed to have accepted the updated Terms.
+            </p>
+          </section>
 
-            <p class="muted" style="margin-top:12px">Questions about these upcoming terms? Email <a class="link" href="mailto:info@tastypassport.online">info@tastypassport.online</a>.</p>
-        </section>
+          <!-- 15. Governing law and jurisdiction -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">15. Governing law and jurisdiction</h2>
+            <p>
+              These Terms and any dispute or claim arising out of or in connection with them (including non-contractual disputes or claims) shall be governed by and construed in accordance with the laws of Cyprus, without regard to conflict-of-law principles.
+            </p>
+            <p>
+              You agree that the courts of Cyprus shall have exclusive jurisdiction to settle any such dispute or claim, subject to any mandatory consumer protection rules that give you additional rights in your country of residence.
+            </p>
+          </section>
 
-        <footer class="muted" role="contentinfo">
-            <div>Last updated: November 29, 2025</div>
-            <div style="margin-top:6px">Status: Draft — This page will be finalized and linked from site footer when complete.</div>
-        </footer>
+          <!-- 16. Contact -->
+          <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-semibold text-coffee">16. Contact</h2>
+            <p>
+              If you have questions about these Terms or about the Service, you can contact us at:
+            </p>
+            <p class="font-medium">
+              📧 <a href="mailto:info@tastypassport.online" class="text-tangerine hover:underline">info@tastypassport.online</a><br>
+              Subject line: <span class="font-semibold">“Terms”</span>
+            </p>
+          </section>
+        </div>
+      </section>
     </main>
+
+    <!-- FOOTER (same as main site style, simplified) -->
+    <footer class="bg-white py-10 border-t border-latte/60">
+      <div class="max-w-6xl mx-auto px-5 md:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm">
+        <div class="flex items-center gap-3">
+          <img 
+            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764335496/Logo_TastyPassport_1x1_lxrjqa.svg" 
+            alt="Tasty Passport Icon" 
+            class="h-8 w-8 rounded-lg shadow-sm"
+          >
+          <img 
+            src="https://res.cloudinary.com/dnxoz9alm/image/upload/v1764336914/Logo_Text_Only_ar2jck.svg" 
+            alt="Tasty Passport" 
+            class="h-5 w-auto"
+          >
+        </div>
+        <div class="flex flex-wrap items-center gap-6 text-cocoa/80 font-medium">
+          <a href="privacy.html" class="hover:text-tangerine transition">Privacy</a>
+          <a href="terms.html" class="text-tangerine font-semibold">Terms</a>
+          <a href="https://www.instagram.com/createwithstudio17" target="_blank" rel="noopener noreferrer" class="hover:text-tangerine transition">Instagram</a>
+          <a href="https://www.linkedin.com/company/studio17-hq" target="_blank" rel="noopener noreferrer" class="hover:text-tangerine transition">LinkedIn</a>
+          <a href="mailto:info@tastypassport.online" class="hover:text-tangerine transition">Contact</a>
+        </div>
+        <p class="text-xs text-cocoa/60">
+          © <span id="year"></span> Tasty Passport · STUDiO 17 LTD. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+      if (!mobileMenu) return;
+      if (mobileMenu.classList.contains('mobile-menu-closed')) {
+        mobileMenu.classList.remove('mobile-menu-closed');
+        mobileMenu.classList.add('mobile-menu-open');
+      } else {
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.classList.add('mobile-menu-closed');
+      }
+    }
+
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', toggleMenu);
+    }
+
+    // Dynamic year in footer
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+  </script>
 </body>
 </html>
